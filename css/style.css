@@ -37,6 +37,11 @@ header { padding: 0 0.5em; color: #C90B0B; }
 .project-thum { float:left; padding-right: 1em; }
 .project-summary { font-size: 0.9em; font-style: italic; }
 
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
 footer {
   padding: 0 0.5em;
   border-top: 1px solid #ccc;
