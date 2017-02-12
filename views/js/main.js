@@ -205,9 +205,7 @@ function getAdj(x){
       "extinct", "galactic"];
       return scientific;
     default:
-      var scientific_default = ["scientific", "technical", "digital", "programming", "calculating", "formulating", "cyberpunk", "mechanical", "technological",
-      "innovative", "brainy", "chemical", "quantum", "astro", "space", "theoretical", "atomic", "electronic", "gaseous", "investigative", "solar",
-      "extinct", "galactic"];
+      var scientific_default = scientific;
       return scientific_default;
   }
 }
@@ -274,10 +272,7 @@ function getNoun(y) {
       "universe", "gravity", "darkMatter", "constellation", "circuit", "asteroid"];
       return scifi;
     default:
-      var scifi_default = ["robot", "alien", "raygun", "spaceship", "UFO", "rocket", "phaser", "astronaut", "spaceman", "planet", "star", "galaxy",
-      "computer", "future", "timeMachine", "wormHole", "timeTraveler", "scientist", "invention", "martian", "pluto", "jupiter", "saturn", "mars",
-      "quasar", "blackHole", "warpDrive", "laser", "orbit", "gears", "molecule", "electron", "neutrino", "proton", "experiment", "photon", "apparatus",
-      "universe", "gravity", "darkMatter", "constellation", "circuit", "asteroid"];
+      var scifi_default = scifi;
       return scifi_default;
   }
 }
@@ -372,9 +367,7 @@ var pizzaElementGenerator = function(i) {
   pizzaImage = document.createElement("img");
   pizzaDescriptionContainer = document.createElement("div");
 
-  pizzaContainer.classList.add("randomPizzaContainer");
-  pizzaContainer.style.width = "33.33%";
-  pizzaContainer.style.height = "325px";
+  pizzaContainer.classList.add("randomPizzaContainer","col-md-4");
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.style.width="35%";
 
@@ -406,13 +399,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -442,7 +435,6 @@ var resizePizzas = function(size) {
 
     for (var i = 0; i < randomPizzaContainer.length; i++) {
       randomPizzaContainer[i].style.width = newWidth + "%";
-      //if (i === 0) console.log (newWidth);
     }
   }
 
@@ -458,8 +450,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -491,11 +483,30 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+<<<<<<< HEAD
   var items = document.querySelectorAll('.mover');
   var scrollTop = document.body.scrollTop;
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+=======
+  var items = document.getElementsByClassName('mover');
+  var length = items.length;
+  var scrollTop = document.body.scrollTop;
+//  var scrollTop = 1000;
+  var itemTop = Math.sin(scrollTop / 1250);
+
+  // To avoid layout thrashing
+  var phases = [];
+  var itemsLeft = [];
+  for (var i = 0; i < length; i++) {
+    phases.push(scrollTop+(i % 5));
+    itemsLeft.push(items[i].basicLeft);
+  }
+
+  for (var i = 0; i< length; i++) {
+    items[i].style.left = itemsLeft[i]+ 100 * phases[i] + 'px';
+>>>>>>> a3c037df90b9b0e287c936743ac52fed42bd4ef8
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -515,15 +526,16 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  var movingPizza = document.getElementById("movingPizzas1");
+  var elem = document.createElement('img');
   for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizza.appendChild(elem);
   }
   updatePositions();
 });
