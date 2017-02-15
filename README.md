@@ -18,24 +18,30 @@ After it starts, a web browser window should be jump up with http://0.0.0.0:8000
 
 ###How did I carry out the optimization?
 
-####Step 1: Optimize PageSpeed Insights score for index.html
+####Step 1: Improve PageSpeed Insights score for index.html
 
 * Removed unnecessary HTML tags
 * Rewrite HTML with semantic tags
-* Updated and inlined style.css
 * Specified attribute media="print" for printing stylesheet file
 * Added async attribute to the Google Analytics script
 * Relocated external JS file link
 * Resized and compressed all images
 
-####Step 2: Optimize Frames per Second in pizza.html
+####Step 2: Improve Frames per Second in pizza.html
 On the Pizza page, there are randomly generated pizzas with different locations, when you are scrolling, background pizzas will move left to right. All static pizzas on the page could be resized by changing the slider with options for 'small', 'medium', or 'large'.
 
-####Optimizations in views/js/main.js:
+#####Optimizations in views/pizza.html:
+
+* Removed unnecessary HTML tags
+* Updated HTML with semantic tags
+* Re-write the navigation menu code
+* Inlined CSS file
+
+#####Optimizations in views/js/main.js:
 
 * Compressed and resized pizza image (images/pizza.png) and created a small version (pizza-xs.png) for background pizzas
-* Replace querySelector with getElementById
-* Replace querySelectorAll with getElementsByClassName
+* Replaced querySelector with getElementById
+* Replaced querySelectorAll with getElementsByClassName
 * Updates in the changePizzaSizes function:
   * created new array outside loop to store all Pizza containers
   * Followed Cam's lecture to change Pizza size values from pixels to percent, and removed unnecessary function
@@ -48,8 +54,13 @@ On the Pizza page, there are randomly generated pizzas with different locations,
   * Calculated the number of pizzas based on viewport size rather 200, and stored in the new variable backgroundPizzas
   * Cached pizza container in the variable movingContainer outside the for-loop
   * As Cam's suggested, used requestAnimationFrame (updatePositions) to speed performance
+* Updates to resolve all warning messages given by JSLint
+  * Updated code format
+  * Moved all variable declaration outside for-loop
+  * Added "use strict" for each function
+* Added window.onload function rather than run for-loop without event trigger
 
-####Optimizations in views/css/style.css:
+#####Optimizations in views/css/style.css:
 
 * Added settings to mover class for performance purpose
   * backface-visibility: hidden
@@ -58,16 +69,17 @@ On the Pizza page, there are randomly generated pizzas with different locations,
 * Created nav-menu class to polish the navigation menu
 * Removed the minus symbol ahead of "box-sizing: border-box;"
 
-####Optimizations in views/pizza.html:
+####Step 3: Use the task-runner Grunt
+Grunt is a task-runner that for this project was used to: 
 
-* Updated HTML with semantic tags
-* Re-write the navigation menu code
+* Create and clean the destion folder [clean](https://github.com/gruntjs/grunt-contrib-clean)
+* Minify CSS files [cssmin](https://github.com/gruntjs/grunt-contrib-cssmin)
+* Inline CSS after minifing [string-replace](https://github.com/eruizdechavez/grunt-string-replace)
+* Minify JavaScript files [uglify](https://github.com/gruntjs/grunt-contrib-uglify)
+* Replace file names with minified file names [string-replace](https://github.com/eruizdechavez/grunt-string-replace)
+* Compress images [imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
 
-###Usage of the task-runner Grunt
-Grunt is a task-runner that for this project was used to
-minify CSS files (<a href="https://github.com/gruntjs/grunt-contrib-cssmin">cssmin</a>) and JavaScript files (<a href="https://github.com/gruntjs/grunt-contrib-uglify">uglify</a>), as
-well as resize and compress images (<a href="https://github.com/andismith/grunt-responsive-images">responsive_images</a>) via <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a>.
-
+#####References 
 Getting Started with <a href="http://gruntjs.com/getting-started">Grunt</a>.
 
 More <a href="https://github.com/javsalazar/grunt-boilerplate">specific instructions</a> on using Grunt for a Udacity project.
@@ -79,13 +91,10 @@ More <a href="https://github.com/javsalazar/grunt-boilerplate">specific instruct
 * [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
 * [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
 * [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
-
-###Author
-Michael ZHANG
+* [The fewer the downloads, the better](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html)
+* [Reduce the size of text](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html)
+* [Optimize images](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html)
+* [HTTP caching](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html)
 
 ###Contact
-geek.michael@live.com
+[Michael ZHANG](mailto: geek.michael@live.com)
