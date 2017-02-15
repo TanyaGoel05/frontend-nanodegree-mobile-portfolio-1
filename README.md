@@ -26,6 +26,7 @@ After it starts, a web browser window should be jump up. If you don't see the wi
 * Added async attribute to the Google Analytics script
 * Relocated external JS file link
 * Resized and compressed all images
+* Replaced the link to external CSS file with JS WebFont.load function
 
 ###Step 2: Improve Frames per Second in pizza.html
 On the Pizza page, there are randomly generated pizzas with different locations, when you are scrolling, background pizzas will move left to right. All static pizzas on the page could be resized by changing the slider with options for 'small', 'medium', or 'large'.
@@ -70,7 +71,7 @@ On the Pizza page, there are randomly generated pizzas with different locations,
 * Removed the minus symbol ahead of "box-sizing: border-box;"
 
 ###Step 3: Use the task-runner Grunt
-Grunt is a task-runner that for this project was used to: 
+Grunt is a task-runner that for this project was used to:
 
 * Create and clean the destion folder [clean](https://github.com/gruntjs/grunt-contrib-clean)
 * Minify CSS files [cssmin](https://github.com/gruntjs/grunt-contrib-cssmin)
@@ -80,7 +81,7 @@ Grunt is a task-runner that for this project was used to:
 * Compress images [imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
 * Minify HTML files after above tasks [htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin)
 
-####References 
+####References
 Getting Started with <a href="http://gruntjs.com/getting-started">Grunt</a>.
 
 More <a href="https://github.com/javsalazar/grunt-boilerplate">specific instructions</a> on using Grunt for a Udacity project.
