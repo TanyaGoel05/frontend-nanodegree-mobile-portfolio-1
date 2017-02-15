@@ -6,8 +6,7 @@
     <meta name="description" content=" FILL ME IN ">
     <meta name="author" content=" FILL ME IN ">
     <title>Cameron Pittman: Portfolio</title>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <!-- @import main css -->
     <link href="css/print.css" media="print" rel="stylesheet">
   </head>
 
@@ -35,13 +34,19 @@
 		  <p>&copy; Web Performance 2014 <span id="crp-stats" class="pfdata"></span></p>
 	  </footer>
     <script src="js/perfmatters.js"></script>
+	<script async src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
-      (function(w,g){w['GoogleAnalyticsObject']=g;
-      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
-
-      // Optional TODO: replace with your Google Analytics profile ID.
-      ga('create', 'UA-XXXX-Y');
-      ga('send', 'pageview');
+		WebFont.load({
+		google: {
+			families: ['Open Sans Condensed:400,700']
+			},
+		timeout: 2000 // Set the timeout to two seconds
+		});
+		(function(w,g){w['GoogleAnalyticsObject']=g;
+			w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
+			// Optional TODO: replace with your Google Analytics profile ID.
+			ga('create', 'UA-XXXX-Y');
+			ga('send', 'pageview');
     </script>
     <script async src="http://www.google-analytics.com/analytics.js"></script>
   </body>

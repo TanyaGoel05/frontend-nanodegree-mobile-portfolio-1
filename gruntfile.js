@@ -72,7 +72,7 @@ module.exports = function (grunt) {
 				options: {
 					replacements: [
 					{
-						pattern: '<link href="css/style.css" rel="stylesheet">',
+						pattern: '<!-- @import main css -->',
 						replacement: '<style><%= grunt.file.read("dest/css/style.min.css") %></style>'
 					},
 					{
@@ -97,6 +97,22 @@ module.exports = function (grunt) {
 					}]
 				}
 			}
+		},
+		
+		htmlmin: {
+			dest: {
+				options: {
+					removeComments: true,
+					collapseWhitespace: true
+				},
+				files: [{
+					expand: true,
+					cwd: 'dest/',
+					src: ['*.html', 'views/*.html'],
+					dest: 'dest/',
+					filter: 'isFile'
+				}]
+			}
 		}
     });
 
@@ -106,8 +122,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-string-replace');
+	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
     // Run tasks
-    grunt.registerTask('default', ['clean', 'imagemin', 'uglify', 'cssmin', 'string-replace']);
+    grunt.registerTask('default', ['clean', 'imagemin', 'uglify', 'cssmin', 'string-replace', 'htmlmin']);
 
 };

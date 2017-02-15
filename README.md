@@ -1,24 +1,24 @@
-##Website Performance Optimization portfolio project
+#Website Performance Optimization portfolio project
 
 The objective of this project is to optimize this online portfolio for speed. In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques I've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 
 The original unoptimized repository is available at  https://github.com/udacity/frontend-nanodegree-mobile-portfolio
 
-###How to run
+##How to run
 
-Download or use git to clone this repository to local, then transfer to the document root folder of web server. Then access the URL.
+Download or use git to clone this repository to local, then transfer the entire dest folder to web server document root folder. Then access the URL http://yourserveraddress/dest/.
 
-####Recommended approach
+###Recommended approach
 
-You are recommended to use SimpleHTTPServer if Python has been installed (Mac OS X and Linux should have pre-installed version). Open a terminal window, use cd  command to get into the downloaded directory and run the following command:
+You are recommended to use SimpleHTTPServer if Python has been installed (Mac OS X and Linux should have pre-installed version). Open a terminal window, use cd  command to get in the dest directory and run the following command:
 
 python -m SimpleHTTPServer
 
-After it starts, a web browser window should be jump up with http://0.0.0.0:8000/index.html.
+After it starts, a web browser window should be jump up. If you don't see the window, then type http://localhost:8000 into web browser address line and press Enter.
 
-###How did I carry out the optimization?
+##How did I carry out the optimization?
 
-####Step 1: Improve PageSpeed Insights score for index.html
+###Step 1: Improve PageSpeed Insights score for index.html
 
 * Removed unnecessary HTML tags
 * Rewrite HTML with semantic tags
@@ -27,17 +27,17 @@ After it starts, a web browser window should be jump up with http://0.0.0.0:8000
 * Relocated external JS file link
 * Resized and compressed all images
 
-####Step 2: Improve Frames per Second in pizza.html
+###Step 2: Improve Frames per Second in pizza.html
 On the Pizza page, there are randomly generated pizzas with different locations, when you are scrolling, background pizzas will move left to right. All static pizzas on the page could be resized by changing the slider with options for 'small', 'medium', or 'large'.
 
-#####Optimizations in views/pizza.html:
+####Optimizations in views/pizza.html:
 
 * Removed unnecessary HTML tags
 * Updated HTML with semantic tags
 * Re-write the navigation menu code
 * Inlined CSS file
 
-#####Optimizations in views/js/main.js:
+####Optimizations in views/js/main.js:
 
 * Compressed and resized pizza image (images/pizza.png) and created a small version (pizza-xs.png) for background pizzas
 * Replaced querySelector with getElementById
@@ -60,7 +60,7 @@ On the Pizza page, there are randomly generated pizzas with different locations,
   * Added "use strict" for each function
 * Added window.onload function rather than run for-loop without event trigger
 
-#####Optimizations in views/css/style.css:
+####Optimizations in views/css/style.css:
 
 * Added settings to mover class for performance purpose
   * backface-visibility: hidden
@@ -69,7 +69,7 @@ On the Pizza page, there are randomly generated pizzas with different locations,
 * Created nav-menu class to polish the navigation menu
 * Removed the minus symbol ahead of "box-sizing: border-box;"
 
-####Step 3: Use the task-runner Grunt
+###Step 3: Use the task-runner Grunt
 Grunt is a task-runner that for this project was used to: 
 
 * Create and clean the destion folder [clean](https://github.com/gruntjs/grunt-contrib-clean)
@@ -78,13 +78,14 @@ Grunt is a task-runner that for this project was used to:
 * Minify JavaScript files [uglify](https://github.com/gruntjs/grunt-contrib-uglify)
 * Replace file names with minified file names [string-replace](https://github.com/eruizdechavez/grunt-string-replace)
 * Compress images [imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
+* Minify HTML files after above tasks [htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin)
 
-#####References 
+####References 
 Getting Started with <a href="http://gruntjs.com/getting-started">Grunt</a>.
 
 More <a href="https://github.com/javsalazar/grunt-boilerplate">specific instructions</a> on using Grunt for a Udacity project.
 
-### Optimization Tips and Tricks provided by Udacity
+## Optimization Tips and Tricks provided by Udacity
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
 * [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
 * [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
@@ -96,5 +97,5 @@ More <a href="https://github.com/javsalazar/grunt-boilerplate">specific instruct
 * [Optimize images](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html)
 * [HTTP caching](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html)
 
-###Contact
+##Contact
 [Michael ZHANG](mailto: geek.michael@live.com)
