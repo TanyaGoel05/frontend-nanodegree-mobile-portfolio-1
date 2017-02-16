@@ -10,9 +10,10 @@ Download or use git to clone this repository to local, then transfer the entire 
 
 ###Recommended approach
 
-You are recommended to use SimpleHTTPServer if Python has been installed (Mac OS X and Linux should have pre-installed version). Open a terminal window, use cd  command to get in the dest directory and run the following command:
+You are recommended to use SimpleHTTPServer if Python has been installed (Mac OS X and Linux should have pre-installed version). Decompress the file in Explorer (Windows) or Finder (Mac), open a terminal window, use cd  command to get in the file folder and run the following command:
 
-python -m SimpleHTTPServer
+* cd dest
+* python -m SimpleHTTPServer
 
 After it starts, a web browser window should be jump up. If you don't see the window, then type http://localhost:8000 into web browser address line and press Enter.
 
@@ -27,6 +28,7 @@ After it starts, a web browser window should be jump up. If you don't see the wi
 * Relocated external JS file link
 * Resized and compressed all images
 * Replaced the link to external CSS file with JS WebFont.load function
+* Embedded Data URI rather than image links to improve PageSpeed score
 
 ###Step 2: Improve Frames per Second in pizza.html
 On the Pizza page, there are randomly generated pizzas with different locations, when you are scrolling, background pizzas will move left to right. All static pizzas on the page could be resized by changing the slider with options for 'small', 'medium', or 'large'.
@@ -43,6 +45,7 @@ On the Pizza page, there are randomly generated pizzas with different locations,
 * Compressed and resized pizza image (images/pizza.png) and created a small version (pizza-xs.png) for background pizzas
 * Replaced querySelector with getElementById
 * Replaced querySelectorAll with getElementsByClassName
+* Saved the array length to local variable to avoide check at each iteration
 * Updates in the changePizzaSizes function:
   * created new array outside loop to store all Pizza containers
   * Followed Cam's lecture to change Pizza size values from pixels to percent, and removed unnecessary function
@@ -64,9 +67,12 @@ On the Pizza page, there are randomly generated pizzas with different locations,
 ####Optimizations in views/css/style.css:
 
 * Added settings to mover class for performance purpose
-  * backface-visibility: hidden
-  * transform: translateZ(0);
-  * transform: translate3d(0,0,0);
+  * -webkit-transform: translateZ(0);
+  *        transform: translateZ(0);
+  * -webkit-transform: translate3d(0,0,0);
+  *        transform: translate3d(0,0,0);
+  * -webkit-backface-visibility: hidden;
+  *        backface-visibility: hidden;
 * Created nav-menu class to polish the navigation menu
 * Removed the minus symbol ahead of "box-sizing: border-box;"
 
